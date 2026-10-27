@@ -1,0 +1,24 @@
+# ==============================================================================
+# DevOps IA-3: Example Terraform Variable Values
+# Copy this file to terraform.tfvars and customize for your environment.
+# Note: Never commit terraform.tfvars containing personal IP addresses or credentials.
+# ==============================================================================
+
+resource_group_name     = "devops-ia3-rg"
+resource_group_location = "southindia"
+resources_location      = "centralindia"
+
+vnet_name               = "devops-ia3-vnet"
+subnet_name             = "devops-ia3-subnet"
+public_ip_name          = "devops-ia3-public-ip"
+nsg_name                = "devops-ia3-nsg"
+nic_name                = "devops-ia3-nic"
+vm_name                 = "devops-ia3-vm"
+vm_size                 = "Standard_B2als_v2"
+admin_username          = "azureuser"
+
+# Replace with the path to your SSH public key
+ssh_public_key_path     = "~/.ssh/devops_ia3_key.pub"
+
+# Replace with your current verified public IPv4 address (from https://api.ipify.org)
+admin_ssh_allowed_ip    = "14.139.187.145"

@@ -1,0 +1,53 @@
+# ==============================================================================
+# DevOps IA-3: Comprehensive .gitignore
+# Prevents accidental commits of secrets, state files, and build artifacts
+# ==============================================================================
+
+# 1. Security & Credentials
+*.pem
+*.key
+*.pkcs12
+*.pfx
+*.crt
+id_rsa*
+id_ed25519*
+devops_ia3_key*
+!devops_ia3_key.pub.example
+.env
+.env.*
+secrets.json
+
+# 2. Terraform State & Local Artifacts
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+!*.tfvars.example
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# 3. Build & Package Artifacts
+build_output/
+*.tar.gz
+*.zip
+*.bak
+/tmp/
+
+# 4. Logs & Runtime
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 5. OS & IDE Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo

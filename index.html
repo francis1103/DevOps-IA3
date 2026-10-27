@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DevOps IA-3: Automated Deployment of a Web Application Using CI/CD, Terraform, Azure, GitHub, Docker, and Jenkins">
+    <meta name="author" content="Francis - DevOps IA-3">
+    <title>DevOps Pipeline & Cloud Deployment Dashboard | DevOps IA-3</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Gradient Glows -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo" id="brand-logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">DevOps<span class="highlight">IA-3</span></span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#overview" class="nav-link" id="nav-link-overview">Overview</a></li>
+                    <li><a href="#pipeline" class="nav-link" id="nav-link-pipeline">Pipeline</a></li>
+                    <li><a href="#status" class="nav-link" id="nav-link-status">Live Status</a></li>
+                    <li><a href="#architecture" class="nav-link" id="nav-link-architecture">Architecture</a></li>
+                    <li><a href="#stack" class="nav-link" id="nav-link-stack">Tech Stack</a></li>
+                    <li><a href="#workflow" class="nav-link" id="nav-link-workflow">Workflow</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://github.com/francis1103/DevOps-IA3.git" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="btn-github-nav">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>GitHub Repo</span>
+                </a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="badge-pill">
+                        <span class="badge-dot"></span>
+                        <span>Academic DevOps IA-3 Project</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Automated Cloud Deployment with <span class="gradient-text">CI/CD & Infrastructure as Code</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        An end-to-end automated deployment pipeline integrating GitHub, Dockerized Jenkins, Terraform, and Microsoft Azure to deliver modern web applications with zero manual server intervention.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#pipeline" class="btn btn-primary" id="btn-explore-pipeline">
+                            <span>Inspect Pipeline</span>
+                            <span class="arrow">→</span>
+                        </a>
+                        <a href="#status" class="btn btn-secondary" id="btn-view-status">
+                            <span>Check Live Status</span>
+                        </a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-label">Automated Deploy</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">IaC</span>
+                            <span class="metric-label">Terraform Managed</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number">Azure</span>
+                            <span class="metric-label">Ubuntu 22.04 LTS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="terminal-card" id="terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="terminal-title">jenkins-pipeline-runner.sh</span>
+                            <span class="terminal-badge">LIVE MONITOR</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">git push origin main</span></p>
+                            <p class="term-line term-dim">> Webhook triggered -> devops-jenkins</p>
+                            <p class="term-line"><span class="term-cyan">[INFO]</span> Checking out commit <span class="term-hash">#a3f892b</span></p>
+                            <p class="term-line"><span class="term-cyan">[INFO]</span> Validating HTML5, CSS3, & ES6 syntax... <span class="term-green">PASSED</span></p>
+                            <p class="term-line"><span class="term-cyan">[INFO]</span> Terraform syntax & validation check... <span class="term-green">VALID</span></p>
+                            <p class="term-line"><span class="term-cyan">[INFO]</span> Connecting to Azure VM (20.219.161.235)... <span class="term-green">CONNECTED</span></p>
+                            <p class="term-line"><span class="term-cyan">[INFO]</span> Synchronizing files to /var/www/devops-ia3... <span class="term-green">SYNCED</span></p>
+                            <p class="term-line"><span class="term-cyan">[INFO]</span> Reloading Nginx service... <span class="term-green">ACTIVE (RUNNING)</span></p>
+                            <p class="term-line term-success"><span class="term-bold">✔ DEPLOYMENT SUCCESSFUL</span> (Execution Time: 18.4s)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview Section -->
+        <section class="section overview-section" id="overview">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Project Overview</span>
+                    <h2 class="section-title">Bridging Development and Cloud Operations</h2>
+                    <p class="section-description">
+                        DevOps IA-3 solves the challenge of manual, error-prone server deployments by enforcing an automated continuous integration and continuous deployment (CI/CD) lifecycle powered by version control and declarative cloud infrastructure.
+                    </p>
+                </div>
+
+                <div class="cards-grid three-col">
+                    <div class="feature-card">
+                        <div class="card-icon blue-glow">⚙️</div>
+                        <h3 class="card-title">Continuous Integration</h3>
+                        <p class="card-text">
+                            Every code commit pushed to GitHub triggers automated checkout, syntax validation, and unit checks within a sandboxed Dockerized Jenkins environment.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Automated Git change detection</li>
+                            <li>Linting and code structure tests</li>
+                            <li>Immediate build feedback</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card purple-glow">
+                        <div class="card-icon">🏗️</div>
+                        <h3 class="card-title">Infrastructure as Code</h3>
+                        <p class="card-text">
+                            Cloud infrastructure is codified and versioned with HashiCorp Terraform, eliminating configuration drift and ensuring identical, reproducible Azure environments.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Declarative AzureRM definitions</li>
+                            <li>Managed VNet, Subnet, NSG, & VM</li>
+                            <li>Strict principle of least privilege</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card emerald-glow">
+                        <div class="card-icon">🚀</div>
+                        <h3 class="card-title">Automated Deployment</h3>
+                        <p class="card-text">
+                            Pre-validated packages are securely transferred to the Azure Ubuntu host via SSH key authentication, followed by zero-downtime Nginx reloads and HTTP health probes.
+                        </p>
+                        <ul class="feature-list">
+                            <li>SSH key-based authentication</li>
+                            <li>Idempotent deployment scripts</li>
+                            <li>Automated post-deployment verification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Deployment Pipeline Section -->
+        <section class="section pipeline-section" id="pipeline">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">End-to-End Pipeline</span>
+                    <h2 class="section-title">The Continuous Delivery Pipeline</h2>
+                    <p class="section-description">
+                        Trace the end-to-end journey of every line of code from local commit to the live production web server. Click any stage to inspect execution details.
+                    </p>
+                </div>
+
+                <div class="pipeline-track" id="pipeline-track">
+                    <div class="pipeline-step active" data-step="1" id="step-1">
+                        <div class="step-badge">1</div>
+                        <div class="step-icon">💻</div>
+                        <div class="step-label">Source Code</div>
+                        <div class="step-sub">Local Windows 11</div>
+                    </div>
+                    <div class="pipeline-connector"></div>
+
+                    <div class="pipeline-step" data-step="2" id="step-2">
+                        <div class="step-badge">2</div>
+                        <div class="step-icon">🐙</div>
+                        <div class="step-label">GitHub</div>
+                        <div class="step-sub">Version Control</div>
+                    </div>
+                    <div class="pipeline-connector"></div>
+
+                    <div class="pipeline-step" data-step="3" id="step-3">
+                        <div class="step-badge">3</div>
+                        <div class="step-icon">👨‍✈️</div>
+                        <div class="step-label">Jenkins</div>
+                        <div class="step-sub">Docker CI Engine</div>
+                    </div>
+                    <div class="pipeline-connector"></div>
+
+                    <div class="pipeline-step" data-step="4" id="step-4">
+                        <div class="step-badge">4</div>
+                        <div class="step-icon">🌍</div>
+                        <div class="step-label">Terraform</div>
+                        <div class="step-sub">Infrastructure Validation</div>
+                    </div>
+                    <div class="pipeline-connector"></div>
+
+                    <div class="pipeline-step" data-step="5" id="step-5">
+                        <div class="step-badge">5</div>
+                        <div class="step-icon">☁️</div>
+                        <div class="step-label">Microsoft Azure</div>
+                        <div class="step-sub">Cloud Environment</div>
+                    </div>
+                    <div class="pipeline-connector"></div>
+
+                    <div class="pipeline-step" data-step="6" id="step-6">
+                        <div class="step-badge">6</div>
+                        <div class="step-icon">🐧</div>
+                        <div class="step-label">Ubuntu VM</div>
+                        <div class="step-sub">Target Host (SSH)</div>
+                    </div>
+                    <div class="pipeline-connector"></div>
+
+                    <div class="pipeline-step" data-step="7" id="step-7">
+                        <div class="step-badge">7</div>
+                        <div class="step-icon">🌐</div>
+                        <div class="step-label">Web Application</div>
+                        <div class="step-sub">Nginx HTTP Port 80</div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Stage Detail Card -->
+                <div class="stage-inspector-card" id="stage-inspector">
+                    <div class="inspector-header">
+                        <div class="inspector-title-group">
+                            <span class="inspector-tag" id="inspector-tag">STAGE 1 / 7</span>
+                            <h3 class="inspector-title" id="inspector-title">Local Source Code Development</h3>
+                        </div>
+                        <span class="status-pill status-success" id="inspector-status">READY</span>
+                    </div>
+                    <div class="inspector-body">
+                        <p class="inspector-desc" id="inspector-desc">
+                            The developer creates clean, semantic HTML5 structure, modular CSS3 styles, and vanilla JavaScript logic. Changes are staged and reviewed locally before pushing to the central repository.
+                        </p>
+                        <div class="inspector-meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">Primary Tool:</span>
+                                <span class="meta-value" id="inspector-tool">Git 2.50.1 / VS Code / Antigravity</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Execution Environment:</span>
+                                <span class="meta-value" id="inspector-env">Windows 11 Workstation</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Output Artifact:</span>
+                                <span class="meta-value" id="inspector-artifact">Clean Git Commit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deployment Status Section -->
+        <section class="section status-section" id="status">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Live Telemetry</span>
+                    <h2 class="section-title">Deployment Status & Health Monitor</h2>
+                    <p class="section-description">
+                        Real-time status indicators tracking pipeline health, deployment state, and VM service availability.
+                    </p>
+                </div>
+
+                <div class="status-dashboard-grid">
+                    <div class="status-overview-card">
+                        <div class="status-card-header">
+                            <div>
+                                <h3 class="card-title">Production Status</h3>
+                                <p class="card-subtitle">Azure Host: <span class="mono">20.219.161.235</span></p>
+                            </div>
+                            <span class="status-indicator-badge badge-active" id="main-status-badge">
+                                <span class="pulse-dot"></span>
+                                <span id="main-status-text">Successful</span>
+                            </span>
+                        </div>
+
+                        <div class="status-metrics-row">
+                            <div class="status-metric-box">
+                                <span class="box-label">Pipeline Result</span>
+                                <span class="box-value text-success" id="status-pipeline-val">Successful</span>
+                            </div>
+                            <div class="status-metric-box">
+                                <span class="box-label">HTTP Web Server</span>
+                                <span class="box-value text-success" id="status-http-val">Port 80 Active</span>
+                            </div>
+                            <div class="status-metric-box">
+                                <span class="box-label">SSH Inbound Rule</span>
+                                <span class="box-value text-warning" id="status-ssh-val">Admin IP Restricted</span>
+                            </div>
+                            <div class="status-metric-box">
+                                <span class="box-label">Target Architecture</span>
+                                <span class="box-value" id="status-vm-val">Ubuntu 22.04 LTS</span>
+                            </div>
+                        </div>
+
+                        <div class="status-actions">
+                            <button class="btn btn-primary" id="btn-run-healthcheck">
+                                <span class="btn-spinner" id="btn-spinner" style="display:none;"></span>
+                                <span id="btn-healthcheck-text">Re-check System Health</span>
+                            </button>
+                            <span class="last-checked-label" id="last-checked-label">Last checked: Just now</span>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline Stage Health Checklist -->
+                    <div class="stages-checklist-card">
+                        <h4 class="checklist-title">Pipeline Verification Checklist</h4>
+                        <div class="checklist-items">
+                            <div class="check-item passed">
+                                <span class="check-icon">✔</span>
+                                <div class="check-info">
+                                    <span class="check-name">Git Repository Check</span>
+                                    <span class="check-detail">Remote connected & commits tracked</span>
+                                </div>
+                                <span class="check-badge">SUCCESS</span>
+                            </div>
+                            <div class="check-item passed">
+                                <span class="check-icon">✔</span>
+                                <div class="check-info">
+                                    <span class="check-name">Static Syntax Validation</span>
+                                    <span class="check-detail">HTML5, CSS, and JS syntax passed</span>
+                                </div>
+                                <span class="check-badge">SUCCESS</span>
+                            </div>
+                            <div class="check-item passed">
+                                <span class="check-icon">✔</span>
+                                <div class="check-info">
+                                    <span class="check-name">Terraform Configuration</span>
+                                    <span class="check-detail">Provider & variables validated</span>
+                                </div>
+                                <span class="check-badge">SUCCESS</span>
+                            </div>
+                            <div class="check-item passed">
+                                <span class="check-icon">✔</span>
+                                <div class="check-info">
+                                    <span class="check-name">Jenkins Automation Engine</span>
+                                    <span class="check-detail">Container running on port 8080</span>
+                                </div>
+                                <span class="check-badge">SUCCESS</span>
+                            </div>
+                            <div class="check-item in-progress" id="check-item-deploy">
+                                <span class="check-icon">⏳</span>
+                                <div class="check-info">
+                                    <span class="check-name">Azure Deployment Probe</span>
+                                    <span class="check-detail">SSH key deployment & Nginx sync</span>
+                                </div>
+                                <span class="check-badge badge-pending">PENDING</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Architecture Section -->
+        <section class="section architecture-section" id="architecture">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">System Architecture</span>
+                    <h2 class="section-title">Zero-Trust Cloud Infrastructure Topology</h2>
+                    <p class="section-description">
+                        Designed for security, resilience, and minimal operating costs on Microsoft Azure for Students subscription.
+                    </p>
+                </div>
+
+                <div class="architecture-diagram-wrapper">
+                    <div class="arch-layer-card">
+                        <div class="layer-header">
+                            <span class="layer-number">LAYER 1</span>
+                            <h4>Developer & CI/CD Control Plane (Local Host)</h4>
+                        </div>
+                        <div class="layer-content-grid">
+                            <div class="arch-box">
+                                <div class="arch-box-icon">💻</div>
+                                <h5>Developer Workstation</h5>
+                                <p>Windows 11 with PowerShell & Git</p>
+                            </div>
+                            <div class="arch-arrow">→</div>
+                            <div class="arch-box">
+                                <div class="arch-box-icon">🐙</div>
+                                <h5>GitHub Repository</h5>
+                                <p>francis1103/DevOps-IA3 (main branch)</p>
+                            </div>
+                            <div class="arch-arrow">→</div>
+                            <div class="arch-box">
+                                <div class="arch-box-icon">🐳</div>
+                                <h5>Dockerized Jenkins</h5>
+                                <p>devops-jenkins (Port 127.0.0.1:8080)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-connector vertical-connector"></div>
+
+                    <div class="arch-layer-card azure-cloud-layer">
+                        <div class="layer-header">
+                            <span class="layer-number">LAYER 2</span>
+                            <h4>Microsoft Azure Cloud (Central India / South India)</h4>
+                        </div>
+                        <div class="layer-content-grid">
+                            <div class="arch-box">
+                                <div class="arch-box-icon">🛡️</div>
+                                <h5>Network Security Group</h5>
+                                <p>devops-ia3-nsg (Port 80 Public / Port 22 Admin Only)</p>
+                            </div>
+                            <div class="arch-arrow">→</div>
+                            <div class="arch-box">
+                                <div class="arch-box-icon">🌐</div>
+                                <h5>Public IP & NIC</h5>
+                                <p>devops-ia3-public-ip (20.219.161.235)</p>
+                            </div>
+                            <div class="arch-arrow">→</div>
+                            <div class="arch-box">
+                                <div class="arch-box-icon">🐧</div>
+                                <h5>Ubuntu 22.04 LTS VM</h5>
+                                <p>devops-ia3-vm (Standard_B2als_v2)</p>
+                            </div>
+                            <div class="arch-arrow">→</div>
+                            <div class="arch-box">
+                                <div class="arch-box-icon">⚡</div>
+                                <h5>Nginx Web Server</h5>
+                                <p>Document Root: /var/www/devops-ia3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack Section -->
+        <section class="section stack-section" id="stack">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Tools & Technologies</span>
+                    <h2 class="section-title">Industry-Standard DevOps Toolchain</h2>
+                    <p class="section-description">
+                        Curated technologies selected for enterprise reliability, automated reproducibility, and academic excellence.
+                    </p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-header">
+                            <div class="tech-icon-bg">🐙</div>
+                            <div>
+                                <h4 class="tech-name">Git & GitHub</h4>
+                                <span class="tech-role">Version Control</span>
+                            </div>
+                        </div>
+                        <p class="tech-desc">Distributed version control managing source history, branch policies, and triggering Jenkins automation upon code push.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-header">
+                            <div class="tech-icon-bg">🐳</div>
+                            <div>
+                                <h4 class="tech-name">Docker Engine</h4>
+                                <span class="tech-role">Containerization</span>
+                            </div>
+                        </div>
+                        <p class="tech-desc">Encapsulates Jenkins and its build dependencies in an isolated, portable container on Windows 11.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-header">
+                            <div class="tech-icon-bg">👨‍✈️</div>
+                            <div>
+                                <h4 class="tech-name">Jenkins CI/CD</h4>
+                                <span class="tech-role">Pipeline Orchestration</span>
+                            </div>
+                        </div>
+                        <p class="tech-desc">Automates build checkout, static code analysis, Terraform validation, and automated SSH-based deployment.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-header">
+                            <div class="tech-icon-bg">🌍</div>
+                            <div>
+                                <h4 class="tech-name">HashiCorp Terraform</h4>
+                                <span class="tech-role">Infrastructure as Code</span>
+                            </div>
+                        </div>
+                        <p class="tech-desc">Declarative infrastructure management provisioning Azure VNet, subnets, network security groups, and Linux VMs.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-header">
+                            <div class="tech-icon-bg">☁️</div>
+                            <div>
+                                <h4 class="tech-name">Microsoft Azure</h4>
+                                <span class="tech-role">Cloud Hosting</span>
+                            </div>
+                        </div>
+                        <p class="tech-desc">Provides enterprise-grade cloud compute, static public IP routing, and granular Network Security Groups.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="tech-header">
+                            <div class="tech-icon-bg">🌐</div>
+                            <div>
+                                <h4 class="tech-name">Nginx Web Server</h4>
+                                <span class="tech-role">HTTP Reverse Proxy</span>
+                            </div>
+                        </div>
+                        <p class="tech-desc">High-performance HTTP server running on Ubuntu 22.04 LTS serving static assets with gzip compression.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Workflow Section -->
+        <section class="section workflow-section" id="workflow">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Step-by-Step</span>
+                    <h2 class="section-title">End-to-End Operational Workflow</h2>
+                    <p class="section-description">
+                        How continuous integration and continuous deployment ensure rapid, safe, and verifiable delivery.
+                    </p>
+                </div>
+
+                <div class="workflow-steps-list">
+                    <div class="workflow-step-card">
+                        <div class="step-num">01</div>
+                        <div class="workflow-step-content">
+                            <h4>Code & Commit</h4>
+                            <p>Developer modifies the frontend application or deployment scripts on Windows 11. Changes are tested locally and committed to the Git repository.</p>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step-card">
+                        <div class="step-num">02</div>
+                        <div class="workflow-step-content">
+                            <h4>Push to GitHub</h4>
+                            <p>Code is pushed to GitHub (<span class="mono">francis1103/DevOps-IA3</span>). The repository maintains code integrity and acts as the single source of truth.</p>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step-card">
+                        <div class="step-num">03</div>
+                        <div class="workflow-step-content">
+                            <h4>Jenkins Triggers Pipeline</h4>
+                            <p>Jenkins detects the new commit via SCM polling or webhook, creates an isolated workspace, and checks out the exact commit SHA.</p>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step-card">
+                        <div class="step-num">04</div>
+                        <div class="workflow-step-content">
+                            <h4>Validation & Security Scan</h4>
+                            <p>Jenkins validates HTML/CSS/JS syntax, verifies script execution permissions, checks Terraform configuration, and enforces zero-secret exposure policies.</p>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step-card">
+                        <div class="step-num">05</div>
+                        <div class="workflow-step-content">
+                            <h4>SSH Package Transfer & Deploy</h4>
+                            <p>Using credentials stored in Jenkins' secure vault, Jenkins establishes an authenticated SSH session to the Azure VM (<span class="mono">20.219.161.235</span>) and synchronizes release files to <span class="mono">/var/www/devops-ia3</span>.</p>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step-card">
+                        <div class="step-num">06</div>
+                        <div class="workflow-step-content">
+                            <h4>Service Reload & Health Verification</h4>
+                            <p>The deployment script reloads Nginx and performs an HTTP GET probe on port 80. If any step fails, the pipeline aborts immediately with diagnostic logs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">DevOps IA-3 Deployment Dashboard</span>
+                <p class="footer-sub">Automated CI/CD Pipeline with Terraform, Azure, GitHub, Docker, and Jenkins</p>
+            </div>
+            <div class="footer-meta">
+                <p>Academic Project — DevOps IA-3 | Developer: Francis</p>
+                <p>Azure Region: <span class="mono">centralindia</span> | VM: <span class="mono">Ubuntu 22.04 LTS (devops-ia3-vm)</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
